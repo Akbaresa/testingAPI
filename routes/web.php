@@ -1,0 +1,26 @@
+<?php
+
+use App\Http\Controllers\UploadController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/upload' , function(){
+    return view('upload');
+});
+Route::post('/upload-file' , [UploadController::class , 'upload'])->name('store_upload');
+Route::post('/download-drive/{filename}', [UploadController::class , 'download_krs'])->name('download_krs');
+Route::get('/download-drive/{filename}', [UploadController::class , 'download_kwitansi'])->name('download_kwitansi');
